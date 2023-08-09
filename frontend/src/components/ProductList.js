@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-const ProductList = () => {
+const ProductList = ({}) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -8,7 +8,8 @@ const ProductList = () => {
     }, []);
 
     const getProducts = async () => {
-        let result = await fetch('https://ecommapi-bljl.onrender.com/products');
+        const userId = JSON.parse(localStorage.getItem('user'))._id;
+        let result = await fetch(`https://ecommapi-bljl.onrender.com/products/${userId}`);
         result = await result.json();
         setProducts(result);
     }

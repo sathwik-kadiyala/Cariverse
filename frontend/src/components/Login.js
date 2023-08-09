@@ -23,7 +23,10 @@ const Login = () => {
         });
         result = await result.json();
         console.warn(result)
-        if (result) {
+        if(result.result==="No User found" || result.result==="Enter Details." ){
+            alert("Please enter connect details")
+        }
+       else if (result) {
             localStorage.setItem('user', JSON.stringify(result));
            
             navigate("/")
