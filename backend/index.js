@@ -52,7 +52,7 @@ app.post("/add-product", async (req, resp) => {
 });
 
 app.get("/products/:id",  async (req, resp) => {
-    const products = await Product.find({ _id: req.params.id });
+    const products = await Product.find({userId: req.params.id });
     if (products.length > 0) {
         resp.send(products)
     } else {
